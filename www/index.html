@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chat Application</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link href="/favicon.ico" type="image/x-icon" rel="icon" />
+    <link type="text/css" rel="stylesheet" href="./index.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+
+</head>
+
+<body>
+    <div>
+        <div id="chat-group">
+            <h2>Chat Group</h2>
+            <div id="chat-window" class="change">
+                <div id="status"></div>
+                <div id="output">
+                    <input id="user_email" type="text" placeholder="Email" required autocomplete="off">
+                    <input id="password" type="password" placeholder="Password" required autocomplete="off" />
+                    <button id="login">Login</button>
+                    <br><br>
+                    <div style="text-align: center;">
+                        <a href="/forgot" id="forgot_link">Forgot password</a> &nbsp;
+                        <p id="signUp_link">Sign Up</p>
+                    </div>
+                </div>
+                <div id="feedback"></div>
+            </div>
+            <!-- <input id="handle" type="text" placeholder="Handle"  /> -->
+            <textarea id="message" class="change1" placeholder="Message"></textarea>
+            <button id="send" class="change1">Send</button>
+
+            <div id="signUp_window">
+                <div id="id01" class="modal">
+                    <form class="modal-content" action="index.html">
+                        <div class="container">
+                            <h1>Sign Up</h1>
+                            <p>Please fill in this form to create an account.</p>
+                            <hr>
+
+                            <label for="userName"><b>Name</b></label>
+                            <input type="text" id="signup_userName" placeholder="Enter Name" name="name" autocomplete="off" required>
+
+                            <label for="email"><b>Email</b></label>
+                            <input type="text" id="signUP_email" placeholder="Enter Email" name="email" autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+
+                            <label for="psw"><b>Password</b></label>
+                            <input type="password" id="signUP_password" placeholder="Enter Password" name="psw" autocomplete="off" required>
+
+                            <label for="psw-repeat"><b>Confirm Password</b></label>
+                            <input type="password" id="signUP_confirm_password" placeholder="Confirm Password" name="psw-repeat" autocomplete="off" required>
+
+                            <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+                            <div class="clearfix">
+                                <span style="display:inline-block">
+                                    <a href="index.html"><button type="button" class="cancelbtn">Cancel</button></a>
+                                    <button type="submit" class="signupbtn" id="signupbtn">Sign Up</button>                             
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript" src="client.js"></script>
+    <script>
+        $('#signUP_password, #signUP_confirm_password').on('input', function() {
+            if ($('#signUP_password').val() == $('#signUP_confirm_password').val()) {
+
+                $('signUP_confirm_password').css({
+                    "border-color": "#049c1e",
+                    "border-width": "1px",
+                    "border-style": "solid"
+                });
+                //$('#message').html('Matching').css('color', 'green');
+            } else
+                $('signUP_confirm_password').css({
+                    "background-color": "#bd190d",
+                    "border-width": "1px",
+                    "border-style": "solid"
+                });
+            // $('#message').html('Not Matching').css('color', 'red');
+        });
+    </script>
+</body>
+
+</html>
